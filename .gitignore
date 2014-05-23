@@ -34,3 +34,5 @@ dist
 /RUNNING_PID
 /.settings
 /project/*-shim.sbt
+doc/DomainModl.asta.bak
+doc/DomainModl.png.bak
