@@ -5,32 +5,44 @@ import java.util.Collection;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+/**
+ * A Document
+ *
+ * @author  Andreas Willinger
+ * @version 30.05.2014
+ */
 @Entity
 public class Document
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long ID;
-	
+
+    @NotNull
 	private String author;
 
 	private String kategorie;
 
+    @NotNull
 	private String dokumentName;
-
+    @NotNull
 	private String dokumentenTyp;
 
 	private String schluesselWoerter;
 
-	private boolean locked;
+	private boolean locked = false;
 
-	private Comment[] comment;
+    @OneToMany
+	private Collection<Comment> comment;
 
+    @NotNull
 	private User owner;
-	
-	@OneToMany(optional = true)
+
+    @NotNull
+	@OneToMany
 	private Collection<Usage> usage;
 
+    @OneToMany
 	private Collection<Version> versions;
 
 	public Long getID()
@@ -98,12 +110,12 @@ public class Document
 		this.locked = locked;
 	}
 
-	public Comment[] getComment()
+	public Collection<Comment> getComment()
 	{
 		return comment;
 	}
 
-	public void setComment(Comment[] comment)
+	public void setComment(Collection<Comment> comment)
 	{
 		this.comment = comment;
 	}
@@ -116,16 +128,6 @@ public class Document
 	public void setOwner(User owner)
 	{
 		this.owner = owner;
-	}
-
-	public Collection<User> getUsers()
-	{
-		return users;
-	}
-
-	public void setUsers(Collection<User> users)
-	{
-		this.users = users;
 	}
 
 	public Collection<Usage> getUsage()

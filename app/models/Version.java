@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import java.util.Date;
 
 import javax.persistence.*;
