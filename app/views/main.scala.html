@@ -1,5 +1,4 @@
 @(title: String)(content: Html)
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +13,21 @@
     </style>
 </head>
 <body>
+<header>
+    <dl id="user">
+        <dt>@user.name <span>(@user.email)</span></dt>
+        <dd>
+            <a href="@routes.Application.logout()">Logout</a>
+        </dd>
+    </dl>
+    <a href="@routes.Application.index" id="logo"><span>Zen</span>tasks</a>
+    <dl id="user">
+        <dt>User</dt>
+        <dd>
+            <a href="@routes.Application.logout()">Logout</a>
+        </dd>
+    </dl>
+</header>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">

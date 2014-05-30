@@ -32,4 +32,6 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-search-integrationtest-osgi-features" % "5.0.0.Alpha4",
   "org.hibernate" % "hibernate-search-integrationtest-osgi" % "5.0.0.Alpha4")
 
+libraryDependencies += "org.avaje" % "ebean" % "2.8.1"
+
 playJavaSettings
