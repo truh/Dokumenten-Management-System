@@ -8,4 +8,6 @@ libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.2.2", 
   "org.webjars" % "bootstrap" % "2.3.1")
 
+libraryDependencies += "org.hibernate" % "hibernate" % "3.6.0.Beta2"
+
 playJavaSettings
