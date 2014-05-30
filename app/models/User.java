@@ -1,11 +1,16 @@
 package models;
 
-public class User {
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
+@Entity
+public class User
+{
+	@Id
 	private String name;
-
+	
+	@NotNull
 	private String password;
-
-	private Version version;
-
+	
+	
 }
