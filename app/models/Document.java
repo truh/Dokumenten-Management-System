@@ -1,8 +1,11 @@
 package models;
 
+import org.hibernate.annotations.*;
+
 import java.util.Collection;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.*;
 
 /**
@@ -32,17 +35,20 @@ public class Document
 
 	private boolean locked = false;
 
+    @NotNull
+    private User owner;
+
     @OneToMany
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
 	private Collection<Comment> comment;
 
     @NotNull
-	private User owner;
-
-    @NotNull
 	@OneToMany
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
 	private Collection<Usage> usage;
 
     @OneToMany
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
 	private Collection<Version> versions;
 
 	public Long getID()

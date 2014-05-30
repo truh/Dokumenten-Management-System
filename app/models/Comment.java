@@ -22,7 +22,6 @@ public class Comment
 	private String text;
     
     @ManyToOne(optional = false)
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 	private User author;
     
     public Long getID()

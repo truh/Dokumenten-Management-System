@@ -10,6 +10,7 @@ import javax.validation.constraints.*;
  * @version 30.05.2014
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User
 {
 	@Id
