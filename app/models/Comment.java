@@ -5,6 +5,12 @@ import javax.validation.constraints.*;
 
 import org.hibernate.annotations.Cascade;
 
+/**
+ * Comment Entity
+ * 
+ * @author Andreas Willinger
+ * @version 30.05.2014
+ */
 @Entity
 public class Comment
 {
