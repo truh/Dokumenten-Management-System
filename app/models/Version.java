@@ -1,9 +1,10 @@
 package models;
 
-import java.util.Date;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 public class Version

@@ -8,5 +8,11 @@ public class Application extends Controller {
     public static Result index() {
         return ok(views.html.index.render("Hello Play Framework"));
     }
+
+    public static Result login() {
+        return ok(
+                login.render()
+        );
+    }
     
 }
