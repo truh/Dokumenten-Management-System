@@ -12,8 +12,11 @@ import javax.validation.constraints.*;
 @Entity
 public class Usage
 {
+    @NotNull
 	private RType role;
-	
+
+    @NotNull
+    @ManyToOne(optional = false)
 	private User user;
 
 	public RType getRole()

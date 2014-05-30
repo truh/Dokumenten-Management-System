@@ -27,6 +27,7 @@ public class Comment
     
     public Long getID()
     {
+        return this.ID;
     }
     
     public String getText()
