@@ -6,6 +6,8 @@ import play.mvc.Http.*;
 
 import models.*;
 
+import routes;
+
 public class Secured extends Security.Authenticator {
 
     @Override

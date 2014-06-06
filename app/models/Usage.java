@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 /**
- * * .. * Entity between Document & User
+ * * .. * Entity between Document &amp; User
  * 
  * @author Andreas Willinger
  * @version 30.05.2014
