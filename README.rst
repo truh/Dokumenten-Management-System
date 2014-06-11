@@ -1,6 +1,6 @@
-###########################
-Dokumenten Mangement System
-###########################
+############################
+Dokumenten Management System
+############################
 
 ======
 Angabe
@@ -163,6 +163,54 @@ sich über diese Addresse im Webbrowser öffnen.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Benutzung der Webapplikation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: doc/Screen1.png
+    :width: 30%
+
+Die Startseite, zu beginn existiert noch kein Account.
+
+.. image:: doc/Screen2.png
+    :width: 30%
+
+Versucht man sich einzuloggen.
+
+.. image:: doc/Screen3.png
+    :width: 30%
+
+So schlägt dies fehl.
+
+.. image:: doc/Screen4.png
+    :width: 30%
+
+Es gibt keine graphische Oberfläche zum erstellen eines Benutzers.
+Ein neuer Benutzer muss wie am Bild gezeigt über änderung der Url
+angelegt werden.
+
+.. image:: doc/Screen4.5.png
+    :width: 30%
+
+So sieht es aus wenn der Benutzer erfolgreich erstellt wurde.
+
+.. image:: doc/Screen5.png
+    :width: 30%
+
+So wenn das erstellen fehlschlägt. In diesem Fall weil der Benutzer bereits
+existiert.
+
+.. image:: doc/Screen2.png
+    :width: 30%
+
+Jetzt von der benutzer angelegt wurde kann man sich auch einloggen.
+
+.. image:: doc/Screen6.png
+    :width: 30%
+
+Eingeloggter Benutzer wird begrüßt.
+
+.. image:: doc/Screen7.png
+    :width: 30%
+
+Nach dem Logout.
 
 =====
 Fazit
