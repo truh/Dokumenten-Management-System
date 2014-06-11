@@ -36,3 +36,4 @@ dist
 /project/*-shim.sbt
 doc/DomainModl.asta.bak
 doc/DomainModl.png.bak
+README.pdf
