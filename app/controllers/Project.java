@@ -2,13 +2,19 @@
 
 package controllers;
 
+import play.mvc.Result;
 import play.mvc.Controller;
 import play.mvc.Security;
+import sbt.complete.Parser;
+
+import java.util.ArrayList;
+
+import static play.data.Form.form;
 
 @Security.Authenticated(Secured.class)
-public class Projects extends Controller {
+public class Project extends Controller {
 
-    public static Result add() {
+    public static Parser.Result add() {
         Project newProject = Project.create(
                 "New project",
                 form().bindFromRequest().get("group"),
