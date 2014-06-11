@@ -44,6 +44,8 @@ public class Application extends Controller {
         }
     }
 
+
+
     public static Result logout() {
         session().clear();
         flash("success", "You've been logged out");
@@ -57,5 +59,17 @@ public class Application extends Controller {
         public String email;
         public String password;
 
+    }
+
+    public static Result javascriptRoutes() {
+        response().setContentType("text/javascripts");
+        return ok(
+                Routes.javascriptRouter("jsRoutes",
+                        controllers.routes.javascript.Projects.add(),
+                        controllers.routes.javascript.Projects.delete(),
+                        controllers.routes.javascript.Projects.rename(),
+                        controllers.routes.javascript.Projects.addGroup()
+                )
+        );
     }
 }

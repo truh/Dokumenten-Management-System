@@ -1,12 +1,8 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
-import play.mvc.Http.*;
-
-import models.*;
-
-import routes;
+import play.mvc.Http.Context;
+import play.mvc.Result;
+import play.mvc.Security;
 
 public class Secured extends Security.Authenticator {
 
@@ -18,5 +14,12 @@ public class Secured extends Security.Authenticator {
     @Override
     public Result onUnauthorized(Context ctx) {
         return redirect(routes.Application.login());
+    }
+
+    public static boolean isMemberOf(Long project) {
+        return Project.isMember(
+                project,
+                Context.current().request().username()
+        );
     }
 }
