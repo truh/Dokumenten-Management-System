@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * A Document
  *
  * @author  Andreas Willinger
- * @version 30.05.2014
+ * @version 11.06.2014
  */
 @Entity
 public class Document
@@ -39,15 +39,18 @@ public class Document
     private User owner;
 
     @OneToMany
+    @Transient
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
 	private Collection<Comment> comment;
 
     @NotNull
+    @Transient
 	@OneToMany
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
 	private Collection<Usage> usage;
 
     @OneToMany
+    @Transient
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
 	private Collection<Version> versions;
 

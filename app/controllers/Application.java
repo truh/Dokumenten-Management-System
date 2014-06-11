@@ -1,71 +1,81 @@
 package controllers;
 
-import play.api.data.Form;
-import play.mvc.Controller;
-import play.mvc.Result;
-import play.mvc.Security;
-import views.html.index;
-import views.html.login;
+import models.User;
+import play.data.*;
+import play.mvc.*;
+import views.html.*;
 
-public class Application extends Controller {
+/**
+ * Entry point of the Application
+ *
+ * @author Andreas Willinger
+ * @version 11.06.2014
+ */
+public class Application extends Controller
+{
+    static Form<Login> loginForm = Form.form(Login.class);
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render("lol"));
+        return ok(index.render(session().get("username")));
     }
 
-    public static Result login() {
+    public static Result register(String username, String password)
+    {
+        if(!User.createUser(username, password))
+            return badRequest("error");
+        return ok("user created");
+    }
+
+    public static Result login()
+    {
         return ok(
-                login.render(form(Login.class))
+                login.render(loginForm)
         );
     }
 
-    public String validate() {
-        if (User.authenticate(email, password) == null) {
-            return "Invalid user or password";
-        }
-        return null;
-    }
+    public static Result authenticate()
+    {
+        Form<Login> filledForm = loginForm.bindFromRequest();
 
-    public static Result authenticate() {
-        Form<Login> loginForm = form(Login.class).bindFromRequest();
-        if (loginForm.hasErrors()) {
-            return badRequest(login.render(loginForm));
+        if (filledForm.hasGlobalErrors()) {
+            return badRequest(login.render(filledForm));
         } else {
             session().clear();
-            session("email", loginForm.get().email);
+            session("username", filledForm.get().username);
+
             return redirect(
                     routes.Application.index()
             );
         }
     }
-
-
-
-    public static Result logout() {
+    public static Result logout()
+    {
         session().clear();
         flash("success", "You've been logged out");
+
         return redirect(
                 routes.Application.login()
         );
     }
 
-    public static class Login {
+    /**
+     * The Login Form, required by Play to read/set form data.
+     */
+    public static class Login
+    {
+        public String username = "";
+        public String password = "";
 
-        public String email;
-        public String password;
-
-    }
-
-    public static Result javascriptRoutes() {
-        response().setContentType("text/javascripts");
-        return ok(
-                Routes.javascriptRouter("jsRoutes",
-                        controllers.routes.javascript.Projects.add(),
-                        controllers.routes.javascript.Projects.delete(),
-                        controllers.routes.javascript.Projects.rename(),
-                        controllers.routes.javascript.Projects.addGroup()
-                )
-        );
+        /**
+         * Do a validation against the Database
+         *
+         * @return null on success, a string containing a message on failure
+         */
+        public String validate()
+        {
+            if(User.doLogin(username, password)) return null;
+            return "Invalid username/password combination.";
+        }
     }
 }
