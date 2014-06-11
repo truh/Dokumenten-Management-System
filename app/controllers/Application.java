@@ -11,11 +11,7 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render(
-                Project.findInvolving(request().username()),
-                Task.findTodoInvolving(request().username()),
-                User.find.byId(request().username())
-        ));
+        return ok(index.render("lol"));
     }
 
     public static Result login() {
