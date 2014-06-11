@@ -4,22 +4,18 @@ import play.mvc.Http.Context;
 import play.mvc.Result;
 import play.mvc.Security;
 
-public class Secured extends Security.Authenticator {
-
+/**
+ * Security class, overriding some methods already implemented by Play!.
+ */
+public class Secured extends Security.Authenticator
+{
     @Override
     public String getUsername(Context ctx) {
-        return ctx.session().get("email");
+        return ctx.session().get("username");
     }
 
     @Override
     public Result onUnauthorized(Context ctx) {
         return redirect(routes.Application.login());
-    }
-
-    public static boolean isMemberOf(Long project) {
-        return Project.isMember(
-                project,
-                Context.current().request().username()
-        );
     }
 }

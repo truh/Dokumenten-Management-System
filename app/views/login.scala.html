@@ -1,28 +1,29 @@
-@(form: Form[Application.Login])
+@(loginForm: Form[Application.Login])
+
+@import helper._
+
+<!doctype html public>
 <html>
 <head>
-    <title>Zentasks</title>
-    <link rel="shortcut icon" type="image/png" href=@routes.Assets.at("images/favicon.png")>
-    <link rel="stylesheet" type="text/css" media="screen" href=@routes.Assets.at("stylesheets/login.css")>
+    <title>Dokumenten Management System :: Login</title>
 </head>
 <body>
-<header>
-    <a href="@routes.Application.index" id="logo"><span>Zen</span>tasks</a>
-</header>
-@helper.form(routes.Application.authenticate) {
+
 <h1>Sign in</h1>
-@if(form.hasGlobalErrors) {
+
+@helper.form(routes.Application.authenticate()) {
+@if(loginForm.hasGlobalErrors) {
 <p class="error">
-    @form.globalError.message
+    <span style="color: red;">@loginForm.globalError.message</span>
 </p>
 }
 @if(flash.contains("success")) {
 <p class="success">
-    @flash.get("success")
+    <span style="color: green">@flash.get("success")</span>
 </p>
 }
 <p>
-    <input type="email" name="email" placeholder="Email" value="@form("email").value">
+    <input type="text" name="username" placeholder="Username" value="@loginForm("username").value">
 </p>
 <p>
     <input type="password" name="password" placeholder="Password">

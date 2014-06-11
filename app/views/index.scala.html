@@ -1,9 +1,16 @@
-@(message: String)
+@(username: String)
 
-@main("Welcome to Play Framework") {
+<!doctype html public>
+<html>
+    <head>
+        <title>Dokumenten Management System :: Dashboard</title>
+    </head>
+    <body>
 
-<div class="well">
-    <h1>@message</h1>
-</div>
+        <div class="well">
+            <h1>Welcome, @username</h1>
+            <a href="/logout">Ausloggen</a>
+        </div>
+    </body>
+</html>
 
-}

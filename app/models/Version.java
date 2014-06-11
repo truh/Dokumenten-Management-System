@@ -8,6 +8,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+/**
+ * Represents a single Version of a document.
+ *
+ * @author  Andreas Willinger
+ * @version 11.06.2014
+ */
 @Entity
 public class Version
 {
